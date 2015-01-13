@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "yt-auto-dl",
+  "description": "Automatically downloads youtube videos",
+  "version": "0.0.1",
+  "permissions": [
+    "<all_urls>",
+    "tabs",
+    "activeTab",
+    "storage",
+    "webNavigation",
+    "https://localhost/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
