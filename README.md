@@ -1,2 +1,2 @@
-# reduceapartmentbandwidth
-Downloads all streaming media to reduce apartment bandwidth :P
+# apartmentbandwidthproject
+Project to download all streaming media automatically upon visiting the page to reduce mobile data bandwidth in my apartment :P
