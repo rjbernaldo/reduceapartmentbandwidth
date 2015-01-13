@@ -1,8 +1,8 @@
 if (location.host === 'www.youtube.com' && location.search) {
   var videoId = location.search.split('=')[1];
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://localhost:3000/youtube/' + videoId, true);
-  xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-  xhr.send();
+  chrome.runtime.sendMessage({ videoId: videoId }, function(response) {
+    console.log('Sending ' + videoId + ' to node server...');
+    alert(response.message)
+  });
 }

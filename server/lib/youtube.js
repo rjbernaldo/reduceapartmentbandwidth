@@ -12,8 +12,9 @@ p.on('progress', function(progress) {
 function download(req, res) {
   'use strict';
 
+  console.log('init received');
+
   var videoId = req.params.videoId;
-  console.log('Request for ' + videoId + ' received');
 
   ytdl.getInfo('http://www.youtube.com/watch?v=' + videoId, { downloadURL: true },
   function(err, info) {
@@ -34,33 +35,22 @@ function download(req, res) {
             size = info.size;
           });
 
-          res.status(200, {
-            message: 'Downloading ' + videoTitle
-          });
-
+          res.status(200).send('Downloading ' + videoTitle);
           res.end();
 
         } else {
-          res.status(404, {
-            message: videoTitle + ' has already been saved'
-          });
-
+          res.status(404).send(videoTitle + 'already in folder');
           res.end();
 
         }
       });
 
     } else {
-      res.status(404, {
-        message: 'Invalid URL'
-      });
-
+      res.status(500).send('Invalid URL');
       res.end();
 
     }
   });
-
-
 }
 
 function checkFolder(title, done) {
